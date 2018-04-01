@@ -10,12 +10,11 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
+              <router-link class="nav-link js-scroll-trigger" to="/">Home<span class="sr-only">(current)</span></router-link>
+             
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Peliculas</a>
+               <router-link class="nav-link js-scroll-trigger" to="/personajes">Personajes</router-link>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Personajes</a>
@@ -28,9 +27,9 @@
       </div>
     </nav>
     <div class="container-fluid p-0">
-    
-     <!-- <router-view></router-view>-->
-      <home :films="films"></home> 
+   <!-- <home></home> -->
+      <router-view></router-view>
+      
     </div>
   </div>
 </template>
@@ -41,22 +40,22 @@ import axios from "axios";
 export default {
   name: "app",
   components: {
-    home: Home
+    home: Home,
   },
   mounted() {
-   this.getFilms();
+  // this.getFilms();
   },
   data() {
     return {
       films_url: "https://swapi.co/api/films/",
       films: [],
-    };
+    }
   },
   methods: {
     getFilms() {
       // axios.get().then().catch();
       axios
-        .get("https://swapi.co/api/films/")
+        .get(this.films_url)
         .then(response => {
            this.films= response.data.results
           console.log(this.films);
