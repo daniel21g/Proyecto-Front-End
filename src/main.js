@@ -8,6 +8,7 @@ import axios from 'axios'
 import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Personajes from './components/Personajes.vue'
+import Planetas from './components/Planetas.vue'
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -15,8 +16,8 @@ Vue.config.productionTip = false
 const routes=[
   {path: '/', component: Home},    //creo las rutas
   {path: '/personajes', component: Personajes},
- /* {path: '/education', component: Education},
-  {path: '/experiences', component: Experiences},
+  {path: '/planetas', component: Planetas},
+ /* {path: '/experiences', component: Experiences},
   {path: '/interest', component: Interest},
   {path: '/skills', component: Skills},*/
 ]

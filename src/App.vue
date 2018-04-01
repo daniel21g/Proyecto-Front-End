@@ -17,10 +17,13 @@
                <router-link class="nav-link js-scroll-trigger" to="/personajes">Personajes</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Personajes</a>
+              <router-link class="nav-link js-scroll-trigger" to="/planetas">Planetas</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Planetas</a>
+              <a class="nav-link" href="#">Vehiculos</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link" href="#">Cruceros Espaciales</a>
             </li>
           </ul>
         </div>
