@@ -8,9 +8,8 @@
     <h6 class="card-subtitle mb-2 text-muted">Planeta: {{pep.homeworld.includes("/") ? 'Buscando...' : pep.homeworld}}</h6>
     <h6 class="card-subtitle mb-2 text-muted">Idioma: {{!pep.language ? 'Buscando...' : pep.language}}</h6>
     <!-- <especie :link="pep.species[0]" ></especie> -->
-    <ul class="list-group list-group-flush" v-cloak><Strong>Peliculas</Strong>
+    <ul class="list-group list-group-flush"><Strong>Peliculas:</Strong>
     <li v-for="peli in pep.peliculas" :key="peli.episode" class="list-group-item">Episodio {{peli.episode}}: {{peli.title}}</li>
-    
     </ul>
     <!-- <p class="card-text">Algun texto</p>
     <a href="#!" class="btn btn-primary">Go somewhere</a> 
@@ -37,10 +36,11 @@ export default {
   components: {
     especie: Especie
   },
-  beforeMount() {},
+  beforeMount() {      
+  },
   mounted() {
-    //this.getFilms();
     this.getPeople(this.people_url);
+    //this.$forceUpdate();
     //this.llenar(this.people)
   },
   data() {

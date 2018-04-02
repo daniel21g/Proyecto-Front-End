@@ -9,6 +9,8 @@ import VueRouter from 'vue-router'
 import Home from './components/Home.vue'
 import Personajes from './components/Personajes.vue'
 import Planetas from './components/Planetas.vue'
+import Vehiculos from './components/Vehiculos.vue'
+import Cruceros from './components/Cruceros.vue'
 
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -17,10 +19,9 @@ const routes=[
   {path: '/', component: Home},    //creo las rutas
   {path: '/personajes', component: Personajes},
   {path: '/planetas', component: Planetas},
- /* {path: '/experiences', component: Experiences},
-  {path: '/interest', component: Interest},
-  {path: '/skills', component: Skills},*/
-]
+  {path: '/vehiculos', component: Vehiculos},
+{path: '/cruceros', component: Cruceros},
+  ]
 const router = new VueRouter({
   routes
 })

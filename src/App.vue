@@ -9,10 +9,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
               <router-link class="nav-link js-scroll-trigger" to="/">Home<span class="sr-only">(current)</span></router-link>
-             
-            </li>
+                         </li>
             <li class="nav-item">
                <router-link class="nav-link js-scroll-trigger" to="/personajes">Personajes</router-link>
             </li>
@@ -20,10 +19,10 @@
               <router-link class="nav-link js-scroll-trigger" to="/planetas">Planetas</router-link>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Vehiculos</a>
+              <router-link class="nav-link js-scroll-trigger" to="/vehiculos">Vehiculos</router-link>
             </li>
              <li class="nav-item">
-              <a class="nav-link" href="#">Cruceros Espaciales</a>
+              <router-link class="nav-link js-scroll-trigger" to="/cruceros">Cruceros Espaciales</router-link>
             </li>
           </ul>
         </div>

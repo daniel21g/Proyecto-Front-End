@@ -3,26 +3,22 @@
 <div class="row">
     <div class="container">
     <div class="col-md-12">
-  <h1>Planetas</h1>
+  <h1>Cruceros Espaciales</h1>
   <table class="table table-hover">
   <thead class="thead-dark">
     <tr>
-      <th>Nombre</th>
-      <th>Diametro</th>
-      <th>Clima</th>
-      <th>Terreno</th>
-      <th>Superficie de Agua</th>
-      <th>Población</th>
-    </tr>
+      <th>Modelo</th>
+      <th>Fabricante</th>
+      <th>Tripulacion</th>
+      <th>Pasajeros</th>
+      </tr>
   </thead>
   <tbody>
-    <tr v-for="pla in planets" :key="pla.name">
-      <th >{{pla.name}}</th>
-      <td>{{pla.diameter}}</td>
-      <td>{{pla.climate}}</td>
-      <td>{{pla.terrain}}</td>
-      <td>{{pla.surface_water}}</td>
-      <td>{{pla.population}}</td>
+    <tr v-for="nav in starships" :key="nav.name">
+      <th >{{nav.model}}</th>
+      <td>{{nav.manufacturer}}</td>
+      <td>{{nav.crew}}</td>
+      <td>{{nav.passengers}}</td>
       </tr>
     
   </tbody>
@@ -43,28 +39,28 @@
 <script>
 import axios from "axios";
 export default {
-  name: "planetas",
+  name: "cruceros",
   mounted() {
-    this.getPlanets(this.planets_url);
+    this.getStarships(this.starships_url);
   },
   data() {
     return {
-      planets_url: "https://swapi.co/api/planets/",
-      planets: [],
+      starships_url: "https://swapi.co/api/starships/",
+      starships: [],
       next_page: "",
       prev_page: ""
     };
   },
   methods: {
-    getPlanets(url) {
+    getStarships(url) {
       var app = this;
       axios
         .get(url)
         .then(response => {
-          this.planets = response.data.results;
+          this.starships = response.data.results;
           this.next_page = response.data.next;
           this.prev_page = response.data.previous;
-          console.log(this.planets);
+          //console.log(this.planets);
         })
         .catch(error => {
           console.log(error);
@@ -73,12 +69,12 @@ export default {
 
     siguiente() {
       if (this.next_page != null) {
-        this.getPlanets(this.next_page);
+        this.getStarships(this.next_page);
       }
     },
     anterior() {
       if (this.prev_page != null) {
-        this.getPlanets(this.prev_page);
+        this.getStarships(this.prev_page);
       }
     }
   }
@@ -92,4 +88,3 @@ h1 {
     margin: 0 auto;
 }*/
 </style>
-
