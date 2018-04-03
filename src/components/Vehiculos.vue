@@ -18,8 +18,9 @@
                 <td class="text-left">{{nave.manufacturer}}</td>
                 <td class="text-left">{{nave.name}}</td>
                 <td>
-               <button type="button" class="btn btn-primary" data-target="#modal"  data-toggle="modal">Ver mas...</button>
-               <vehicleModal  :nave="nave" ></vehicleModal>
+               <!--<button type="button" class="btn btn-primary" data-target=".modal"  data-toggle="modal">Ver mas...</button>-->
+               <button type="button" class="btn btn-primary" :data-target="verClase(nave.name)"  data-toggle="modal">Ver mas</button>
+               <vehicleModal  :nave="nave"></vehicleModal>
                 </td>
                 </tr>
                
@@ -59,6 +60,11 @@ export default {
       show:false,
     };
   },
+  computed:{
+   /* verClase(clase){
+     return '.'.concat(clase)
+    }*/
+  },
   components:{
       vehicleModal: Vehicle_modal
   },
@@ -88,8 +94,8 @@ export default {
         this.getVehicles(this.prev_page);
       }
     },
-    launchModal(nav){
-      this.show=true
+    verClase(clase){
+     return '.'.concat(clase.replace(/\s/g,'').replace(/[^a-zA-Z ]/g, ""))
     }
   }
 };

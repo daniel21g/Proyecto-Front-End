@@ -9,19 +9,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
+            <li class="nav-item" :class="{'active':currentRoute=='/'}">
               <router-link class="nav-link js-scroll-trigger" to="/">Home<span class="sr-only">(current)</span></router-link>
                          </li>
-            <li class="nav-item">
+            <li class="nav-item" :class="{'active':currentRoute=='/personajes'}">
                <router-link class="nav-link js-scroll-trigger" to="/personajes">Personajes</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" :class="{'active':currentRoute=='/planetas'}">
               <router-link class="nav-link js-scroll-trigger" to="/planetas">Planetas</router-link>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" :class="{'active':currentRoute=='/vehiculos'}">
               <router-link class="nav-link js-scroll-trigger" to="/vehiculos">Vehiculos</router-link>
             </li>
-             <li class="nav-item">
+             <li class="nav-item" :class="{'active':currentRoute=='/cruceros'}">
               <router-link class="nav-link js-scroll-trigger" to="/cruceros">Cruceros Espaciales</router-link>
             </li>
           </ul>
@@ -37,36 +37,25 @@
 </template>
 
 <script>
-import Home from "./components/Home.vue";
-import axios from "axios";
+
 export default {
   name: "app",
-  components: {
-    home: Home,
-  },
-  mounted() {
-  // this.getFilms();
+ 
+  updated() {
+  this.currentRoute= this.$route.path
+  //console.log(this.$route.path)
   },
   data() {
     return {
-      films_url: "https://swapi.co/api/films/",
-      films: [],
+     
+      currentRoute: this.$route.path
     }
   },
+  computed:{
+    //verRuta(){}
+  },
   methods: {
-    getFilms() {
-      // axios.get().then().catch();
-      axios
-        .get(this.films_url)
-        .then(response => {
-           this.films= response.data.results
-          console.log(this.films);
-          // this.misdatos = response.data.datos;
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
+   
   }
 };
 </script>

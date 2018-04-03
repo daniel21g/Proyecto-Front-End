@@ -1,15 +1,16 @@
 <template>
-<div>
+<div >
 <div class="row">
  <div v-for="pep in people" :key="pep.name" class="w-100 col-md-4 card text-left" style="">
     <h3 class="card-header">{{pep.name}}</h3>
     <div class="card-body">
-    <h4 class="card-title">Especie: {{pep.specie_name}} / {{pep.specie_classification}}</h4>
+    <h4 class="card-title">Especie: {{!pep.specie_name ? 'Buscando...': pep.specie_name.concat(' / ').concat(pep.specie_classification)}}</h4>
     <h6 class="card-subtitle mb-2 text-muted">Planeta: {{pep.homeworld.includes("/") ? 'Buscando...' : pep.homeworld}}</h6>
     <h6 class="card-subtitle mb-2 text-muted">Idioma: {{!pep.language ? 'Buscando...' : pep.language}}</h6>
-    <!-- <especie :link="pep.species[0]" ></especie> -->
-    <ul class="list-group list-group-flush"><Strong>Peliculas:</Strong>
-    <li v-for="peli in pep.peliculas" :key="peli.episode" class="list-group-item">Episodio {{peli.episode}}: {{peli.title}}</li>
+    <Strong>Peliculas:</Strong> {{!dataReady ? 'Buscando...':''}}
+    <ul v-if="dataReady" class="list-group list-group-flush">
+     <peliculas v-for="peli in pep.peliculas" :key="peli.episode" :peli="peli" ></peliculas> 
+    <!--<li v-for="peli in pep.peliculas" :key="peli.episode" class="list-group-item">Episodio {{peli.episode}}: {{peli.title}}</li>-->
     </ul>
     <!-- <p class="card-text">Algun texto</p>
     <a href="#!" class="btn btn-primary">Go somewhere</a> 
@@ -21,7 +22,7 @@
 <div class="row">
     <div class="col-md-12" >
         <button @click="anterior()" :disabled="prev_page==null" type="button" class="btn btn-primary btn-sm">Anterior</button>
-        <button @click="siguiente()" :disabled="next_page==null" type="button" class="btn btn-primary btn-sm">Siguiente</button>
+        <button @click="siguiente()"  :disabled="next_page==null" type="button" class="btn btn-primary btn-sm">Siguiente</button>
     </div>
    <!-- <span style="padding-left: 25px;">{{people[100]}}<br>{{species[100]}}</span> -->
 </div>
@@ -29,16 +30,17 @@
 </template>
 <script>
 import axios from "axios";
-import Especie from "./sub_omponents/Especie.vue";
+import Peliculas from "./sub_omponents/Peliculas.vue";
 
 export default {
   name: "personajes",
   components: {
-    especie: Especie
+    peliculas: Peliculas
   },
   beforeMount() {      
   },
   mounted() {
+      //console.log(this.$route.path)
     this.getPeople(this.people_url);
     //this.$forceUpdate();
     //this.llenar(this.people)
@@ -57,8 +59,18 @@ export default {
       planets_prom_fn: [],
       next_page: "",
       prev_page: "",
-      films: []
+      pelis: [],
+      films: [],
+      dataReady: false,
+
     };
+  },
+  computed: {
+    // a computed getter
+    mensaje: function () {
+      // `this` points to the vm instance
+      return this.titulo
+    }
   },
   methods: {
     getPeople(_url) {
@@ -149,7 +161,13 @@ export default {
                   });
                 });
               });
-              // console.log(app.people[0].peliculas)
+              app.dataReady=true
+              console.log(app.dataReady)
+              //app.pelis=app.people
+             /* app.people.forEach(function(item,index){
+              console.log(item.peliculas)
+              })*/
+              
             })
             .catch(error => {
               console.log(error);
