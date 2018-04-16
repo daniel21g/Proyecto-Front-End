@@ -27,7 +27,7 @@
               <router-link class="nav-link js-scroll-trigger" to="/vehiculos"><i class="swg swg-atat-2 swg-2x"></i> Vehiculos</router-link>
             </li>
              <li class="nav-item" :class="{'active':currentRoute=='/cruceros'}">
-              <router-link class="nav-link js-scroll-trigger" to="/cruceros"><i class="swg swg-jedistarfight swg-2x"></i> Cruceros Espaciales</router-link>
+              <router-link class="nav-link js-scroll-trigger" to="/cruceros"><i class="swg swg-falcon-3 swg-2x"></i> Cruceros Espaciales</router-link>
             </li>
           </ul>
         </div>
@@ -86,6 +86,8 @@ export default {
  
  background-image: url('/img/fondo_estrellas.jpg');
   background-repeat:repeat;
+  height: 110%;
+  width: 100%;
 
  
 }
@@ -113,6 +115,10 @@ font-size: 11pt;
 }
 header{
   margin-bottom: 20px;
+  max-width:100%;
+    max-height:100%;
+    width: auto;
+    height: auto;
 }
 /*body {
  min-width:960px;

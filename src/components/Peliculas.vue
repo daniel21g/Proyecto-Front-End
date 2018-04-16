@@ -13,7 +13,7 @@
         </div>
         <hr class="my-2">
         <p class="lead">
-          <button :disabled="!dataReady" type="button" class="btn btn-primary" :data-target="verClase(film.episode_id)"  data-toggle="modal">Ver personajes</button>
+          <button :disabled="!dataReady" type="button" class="btn btn-info" :data-target="verClase(film.episode_id)"  data-toggle="modal">Ver personajes</button>
         <peliculamodal v-if="dataReady" :film="film"></peliculamodal>
          </p>
          </div>

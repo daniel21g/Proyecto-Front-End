@@ -7,6 +7,7 @@
                 <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Personajes:</h5>
+                    <span class="badge badge-secondary">{{film.names.length}}</span>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -41,11 +42,18 @@ export default {
   font-family: Quantum;
   src: url('../../assets/fonts/Quantum.otf');
 }
-.modal-header{
+.modal-header {
      background-color: rgb(116, 116, 116);
     font-family: Quantum;
     color:white;
-    font-size: 2vw;
+    
+    }
+    .badge{
+      font-size: 2.4vw;  
+      border: none;
+    }
+    .modal-title{
+        font-size: 2vw;
     }
 .modal-body{
     font-size: 1.7vw;

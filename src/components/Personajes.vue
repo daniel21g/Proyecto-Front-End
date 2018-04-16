@@ -373,6 +373,9 @@ export default {
   .card{
     background-color: rgba(255,255,255,0.8)
   }
+  a{
+  background-color: rgba(255,255,255,0.8)
+}
   /*.card-subtitle{
     color: black;
   }*/

@@ -139,11 +139,18 @@ overflow: hidden;
   background-repeat:repeat;
 }
 .table{
-  background-color: rgba(255,255,255,0.8)
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 5px;
 }
 thead{
   font-family: Quantum;
     font-size: 19px;
+}
+tbody{
+  font-size: 16px;
+}
+a{
+  background-color: rgba(255,255,255,0.8)
 }
 /*.col-md-10{
     margin: 0 auto;

@@ -124,7 +124,8 @@ getStarshipsPag(url,pag) {
 </script>
 <style scoped>
 .table{
-  background-color: rgba(255,255,255,0.8)
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 5px;
 }
 h1 {
  margin: 0 auto;
@@ -132,6 +133,9 @@ h1 {
 thead{
   font-family: Quantum;
     font-size: 20px;
+}
+a{
+  background-color: rgba(255,255,255,0.8)
 }
 /*.col-md-10{
     margin: 0 auto;
