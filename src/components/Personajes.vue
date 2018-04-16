@@ -374,7 +374,9 @@ export default {
     background-color: rgba(255,255,255,0.8)
   }
   a{
-  background-color: rgba(255,255,255,0.8)
+  background-color: rgba(255,255,255,0.8);
+  color:black;
+  font-weight: bold;
 }
   /*.card-subtitle{
     color: black;

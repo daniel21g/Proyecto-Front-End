@@ -3,7 +3,7 @@
 <div class="row">
     <div class="container">
     <div class="col-md-12">
-  <table class="table table-hover">
+  <table class="table table-hover table-xs-responsive">
   <thead class="thead-dark">
     <tr>
       <th>Nombre</th>
@@ -135,7 +135,9 @@ thead{
     font-size: 20px;
 }
 a{
-  background-color: rgba(255,255,255,0.8)
+  background-color: rgba(255,255,255,0.8);
+  color:black;
+  font-weight: bold;
 }
 /*.col-md-10{
     margin: 0 auto;

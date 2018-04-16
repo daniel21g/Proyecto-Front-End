@@ -34,10 +34,9 @@
       </div>
     </nav>
     <header class="py-5 bg-image-full" :style="{backgroundImage: 'url('+currentImage(currentRoute)+')'}" height="50%">
-
     </header>
     <div class="container-fluid">
-   <!-- <home> image:'v-bind:style="{ backgroundImage: 'url(' + image + ')' }"'   </home> -->
+   
       <router-view></router-view>
       
     </div>
