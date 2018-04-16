@@ -1,27 +1,42 @@
 <template>
-<div class="row">
-    <div class="container-fluid">
-    <div class="col-md-12">
-       <div  class="jumbotron-fluid text-left" v-for="film in films" :key="film.episode_id">
-        <h1 class="display-4 titulo">Episode {{film.episode_id}}: {{film.title}}</h1>
+   <div class="container-fluid">
+      <div>
+        
+       <div  class="jumbotron text-left row" v-for="film in films" :key="film.episode_id">
+         <div class="col-sm-9">
+        <h1 class="display-6 titulo">Episode {{film.episode_id}}: {{film.title}}</h1>
         <hr class="my-2">
-         <p class="d-inline titulos"><i class="fa fa-calendar"></i><strong> Estreno:</strong>  {{film.release_date}} </p><p class="d-inline titulos"><i class="fa fa-bullhorn"></i> <strong> Director:</strong>{{film.director}} </p> <p class="d-inline titulos"><i class="fa fa-users"></i><strong> Producción:</strong> {{film.producer}}</p>
+         <p class="d-inline titulos"><i class="fa fa-calendar"></i> Estreno: {{film.release_date}} / </p> <p class="d-inline titulos"><i class="fa fa-bullhorn"></i> Director: {{film.director}} / </p> <p class="d-inline titulos"><i class="fa fa-users"></i> Producción: {{film.producer}}</p>
          <hr class="my-2">
-        <p class="lead sinopsis">{{film.opening_crawl}}</p>
+        <p class="lead sinopsis">{{film.opening_crawl.substr(0,1000)+'...'}}</p>
         <div>
         </div>
         <hr class="my-2">
-               </div>
+        <p class="lead">
+          <button :disabled="!dataReady" type="button" class="btn btn-primary" :data-target="verClase(film.episode_id)"  data-toggle="modal">Ver personajes</button>
+        <peliculamodal v-if="dataReady" :film="film"></peliculamodal>
+         </p>
+         </div>
+         <div class="col-sm-3 d-none d-sm-block img">
+      <img :src="image+film.episode_id+'.jpg'" width="100%" height="100%"/>
     </div>
-    </div>
+       </div>
+     
+  </div>
+
 </div>
+    
+    
+   
+
 </template>
 
 <script>
 import axios from "axios";
 import Pelicula_modal from "./sub_components/Pelicula_modal.vue";
+
 export default {
-  name: "home",
+  name: "peliculas",
   mounted() {
     this.getPeople();
     this.getFilms();
@@ -39,8 +54,9 @@ export default {
       people: [],
       people_prom: [],
       count: "",
-      dataReady: false
-    };
+      dataReady: false,
+      image:"/img/ep"
+         };
   },
   methods: {
     getFilms() {
@@ -92,7 +108,7 @@ export default {
                 });
               });
               app.dataReady=true
-            //  console.log(app.dataReady);
+             // console.log(app.dataReady);
               
             })
             .catch(error => {
@@ -115,7 +131,7 @@ export default {
           });
         });
       });
-     // console.log(this.films);
+    //  console.log(this.films);
     },
     verClase(clase) {
       return ".".concat(String(clase));
@@ -124,15 +140,22 @@ export default {
 }; //expport
 </script>
 <style scoped>
-.jumbotron-fluid{
-  max-height: 400px;
-  background-color: rgba(255,255,255,0.8);
-  padding: 30px;
-  margin-bottom: 20px;
-  
+ /*.row{
+  background-image: url('../assets/img/fondo_estrellas.jpg');
+  background-repeat: repeat;
+}*/
+.img {
+    width:auto;
+    height:auto;
+    max-width:100%;
+    max-height:90%;
+    
 }
-i{
-  font-size: 1.5vw;
+.jumbotron{
+  max-height: 450px;
+  background-color: rgba(255,255,255,0.8);
+  padding: 25px;
+  
 }
 .sinopsis{
  font-size: 1.3vw;
@@ -144,6 +167,8 @@ i{
 .titulos{
 font-size: 1.3vw;
 }
-
+.btn{
+font-size: 1.3vw;
+}
 </style>
 
